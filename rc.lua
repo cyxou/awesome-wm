@@ -216,7 +216,11 @@ volumewidget = lain.widgets.alsa({
 
 -- Weather
 myweather = lain.widgets.weather({
-  city_id = 498817 -- placeholder
+  -- Saint Petersburg, Russia http://openweathermap.org/city/519690
+  city_id = 519690,
+  -- 30 minutes
+  timeout = 1800,
+  cnt = 4
 })
 
 -- Separators
@@ -341,6 +345,9 @@ for s = 1, screen.count() do
   right_layout:add(spr)
   --right_layout:add(mpdwidget)
   --right_layout:add(mailwidget)
+  right_layout:add(myweather)
+  right_layout:add(myweather.icon)
+  right_layout:add(spr)
   right_layout:add(cpuwidget)
   right_layout:add(memwidget)
   right_layout:add(batwidget)
