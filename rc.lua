@@ -452,6 +452,10 @@ globalkeys = awful.util.table.join(
         client.focus:raise()
       end
     end),
+  awful.key({ modkey, altkey    }, "l",      function () awful.tag.incmwfact( 0.01)    end),
+  awful.key({ modkey, altkey    }, "h",      function () awful.tag.incmwfact(-0.01)    end),
+  --awful.key({ modkey, "Mod1"    }, "Down",   function () awful.client.incwfact( 0.01)    end),
+  --awful.key({ modkey, "Mod1"    }, "Up",     function () awful.client.incwfact(-0.01)    end),
   awful.key({ altkey, "Shift"   }, "l",      function () awful.tag.incmwfact( 0.05)     end),
   awful.key({ altkey, "Shift"   }, "h",      function () awful.tag.incmwfact(-0.05)     end),
   awful.key({ modkey, "Shift"   }, "l",      function () awful.tag.incnmaster(-1)       end),
