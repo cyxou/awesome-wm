@@ -377,6 +377,9 @@ root.buttons(awful.util.table.join(
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
+  -- Filemanager
+  awful.key({ modkey }, "e", function () awful.util.spawn("dolphin") end),
+
   -- Brightness
   awful.key({ }, "XF86MonBrightnessDown", function () awful.util.spawn("xbacklight -dec 10") end),
   awful.key({ }, "XF86MonBrightnessUp", function () awful.util.spawn("xbacklight -inc 10") end),
