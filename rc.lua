@@ -82,15 +82,14 @@ local layouts = {
   lain.layout.uselesstile,
   lain.layout.uselessfair,
   lain.layout.termfair,
-  lain.layout.uselesspiral.dwindle,
   lain.layout.centerwork
 }
 -- }}}
 
 -- {{{ Tags
 tags = {
-  names = { "dev", "term", "web", "media", "tablet"},
-  layout = { layouts[2], layouts[5], layouts[7], layouts[4], layouts[6] }
+  names = { "dev", "term", "web", "media"},
+  layout = { layouts[3], layouts[5], layouts[4], layouts[4] }
 }
 for s = 1, screen.count() do
   tags[s] = awful.tag(tags.names, s, tags.layout)
