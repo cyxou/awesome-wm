@@ -75,6 +75,8 @@ theme.layout_txt_uselessfair        = "[ufv]"
 theme.layout_txt_uselessfairh       = "[ufh]"
 theme.layout_txt_uselessdwindle     = "[ud]"
 theme.layout_txt_uselesstile        = "[ut]"
+theme.layout_txt_centerwork         = "[cw]"
+theme.layout_txt_centerfair         = "[cf]"
 
 -- | Taglist | --
 theme.taglist_bg_focus = "#D6D6D6"
