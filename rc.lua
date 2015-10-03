@@ -80,16 +80,15 @@ local layouts = {
   awful.layout.suit.floating,
   lain.layout.uselessfair.horizontal,
   lain.layout.uselesstile,
-  lain.layout.uselessfair,
   lain.layout.termfair,
-  lain.layout.centerwork
+  lain.layout.centerfair
 }
 -- }}}
 
 -- {{{ Tags
 tags = {
-  names = { "dev", "term", "web", "media"},
-  layout = { layouts[3], layouts[5], layouts[4], layouts[4] }
+  names = {  "code",     "test",     "web",      "term",     "other"},
+  layout = { layouts[3], layouts[3], layouts[3], layouts[4], layouts[5] }
 }
 for s = 1, screen.count() do
   tags[s] = awful.tag(tags.names, s, tags.layout)
