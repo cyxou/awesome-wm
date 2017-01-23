@@ -12,7 +12,7 @@
 theme            = {}
 theme.icons      = os.getenv("HOME") .. "/.config/awesome/themes/pro-light/icons/"
 --theme.wallpaper  = os.getenv("HOME") .. "/.config/awesome/themes/pro-light/wallpapers/pro-light-shadow.png"
-theme.wallpaper  = os.getenv("HOME") .. "/.config/awesome/themes/pro-light/wallpapers/wall.jpg"
+theme.wallpaper  = os.getenv("HOME") .. "/Pictures/toronto.jpg"
 theme.panel      = "png:" .. theme.icons .. "/panel/panel.png"
 theme.font       = "Sans 10.5"
 
@@ -43,6 +43,12 @@ theme.border_width  = 1
 theme.border_normal = "#000000"
 theme.border_focus  = "#AC2832"
 theme.border_marked = "#CC9393"
+
+-- Lain's niceborder
+theme.border_focus_highprio  = "#FF0000"
+theme.border_normal_highprio = "#A03333"
+theme.border_focus_lowprio   = "#3333FF"
+theme.border_normal_lowprio  = "#333366"
 
 -- | Menu | --
 -- Variables set for theming the menu:
