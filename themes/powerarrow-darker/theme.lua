@@ -29,7 +29,7 @@ local theme                                     = {}
 
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/powerarrow-darker"
 --theme.wallpaper                                 = theme.dir .. "/wall.png"
-theme.wallpaper                                 = os.getenv("HOME") .. "/Pictures/toronto.jpg"
+theme.wallpaper                                 = theme.dir .. "/toronto.jpg"
 
 theme.font                                      = "Hack 9"
 theme.fg_normal                                 = color.base05
