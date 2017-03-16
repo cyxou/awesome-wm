@@ -50,7 +50,7 @@ end
 
 -- Compiz-like utility to add some effects to desktop environment. Without it
 -- chromium browser always flickering.
-run_once("compton -c --fade-delta=2")
+run_once("compton")
 run_once("unclutter -root")
 -- }}}
 
@@ -257,9 +257,15 @@ local batwidget1 = lain.widgets.base({
 })
 --]]
 local batwidget = lain.widgets.bat({
+    timeout = 5,
     ac = "ADP1",
     battery = "BAT0",
     settings = function()
+
+      --naughty.notify({ preset = naughty.config.presets.critical,
+                       --title = "Battery",
+                       --text = bat_now.time })
+
         if bat_now.status ~= "N/A" then
             if bat_now.ac_status == 1 then
                 widget:set_markup(" AC " .. bat_now.perc .. "% ")
@@ -272,7 +278,14 @@ local batwidget = lain.widgets.bat({
             else
                 baticon:set_image(beautiful.widget_battery)
             end
-            widget:set_markup(" " .. bat_now.perc .. "% ")
+            
+            -- Set battery percentage color to red if charge is low.
+            if tonumber(bat_now.perc) <= 15 then
+              widget:set_markup(markup("#bf616a", " " .. bat_now.perc .. "% "))
+            else
+              widget:set_markup(" " .. bat_now.perc .. "% ")
+            end
+
         else
             baticon:set_image(beautiful.widget_ac)
         end
@@ -322,9 +335,9 @@ local netwidget = lain.widgets.net({
     iface = "wlo1",
     settings = function()
         if net_now.state == "up" then
-            widget:set_markup(markup("#a3be8c", " " .. net_now.received)
+            widget:set_markup(markup(beautiful.fg_normal, " ↓" .. net_now.received)
                 .. " " ..
-                markup("#96b5b4", " " .. net_now.sent .. " "))
+                markup(beautiful.fg_normal, " ↑" .. net_now.sent .. " "))
         else
           widget:set_markup(markup("#d08770", " OFF "))
         end
@@ -450,8 +463,8 @@ awful.screen.connect_for_each_screen(function(s)
             wibox.widget.systray(),
             spr,
             arrl_ld,
-            wibox.container.background(volicon, beautiful.bg_focus),
-            wibox.container.background(volume, beautiful.bg_focus),
+            wibox.container.background(neticon, beautiful.bg_focus),
+            wibox.container.background(netwidget, beautiful.bg_focus),
             arrl_dl,
             memicon,
             memwidget,
@@ -469,8 +482,8 @@ awful.screen.connect_for_each_screen(function(s)
             batwidget,
             spr,
             arrl_ld,
-            wibox.container.background(neticon, beautiful.bg_focus),
-            wibox.container.background(netwidget, beautiful.bg_focus),
+            wibox.container.background(volicon, beautiful.bg_focus),
+            wibox.container.background(volume, beautiful.bg_focus),
             arrl_dl,
             mytextclock,
             kbdcfg.widget,
@@ -693,7 +706,10 @@ globalkeys = awful.util.table.join(
               {description = "increase screen brightness by 5%", group = "launcher"}),
 
     -- Alt + Shift to switch keyboard layout
-    awful.key({ altkey }, "Shift_L", function () kbdcfg.switch() end)
+    awful.key({ altkey }, "Shift_L", function () kbdcfg.switch() end),
+
+    -- Filemanager
+    awful.key({ modkey }, "e", function () awful.util.spawn("dolphin") end)
 )
 
 clientkeys = awful.util.table.join(
