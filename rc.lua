@@ -61,7 +61,7 @@ beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/powerarrow-darker/t
 -- common
 local modkey   = "Mod4"
 local altkey   = "Mod1"
-local terminal = "urxvt"
+local terminal = "termite"
 local editor   = os.getenv("EDITOR") or "vi"
 
 -- user defined
@@ -411,7 +411,7 @@ screen.connect_signal("property::geometry", set_wallpaper)
 
 awful.screen.connect_for_each_screen(function(s)
     -- Quake application
-    s.quake = lain.util.quake({ app = terminal })
+    s.quake = lain.util.quake({ app = terminal, argname = "--name %s" })
 
     -- Wallpaper
     set_wallpaper(s)
