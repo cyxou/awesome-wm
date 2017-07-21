@@ -829,6 +829,17 @@ awful.rules.rules = {
     { rule = { class = "Firefox" },
       properties = { screen = 1, tag = awful.screen.focused().tags[2] } },
 
+    -- Set Chromium to always start on screen 3 in normal mode (by default it is maximized).
+    { rule = { class = "Chromium" },
+      properties = { screen = 1,
+                     switchtotag = true,
+                     maximized = false,
+                     maximized_vertical = false,
+                     maximized_horizontal = false,
+                     tag = awful.screen.focused().tags[3]
+                   }
+    },
+
     { rule = { class = "Gimp", role = "gimp-image-window" },
           properties = { maximized_horizontal = true,
                          maximized_vertical = true } },
