@@ -65,7 +65,7 @@ local terminal = "termite"
 local editor   = os.getenv("EDITOR") or "vi"
 
 -- user defined
-local browser    = "chromium"
+local browser    = "chromium --allow-outdated-plugins"
 local graphics   = "gimp"
 local tagnames   = { " α", " β", " γ", " δ", " ε" }
 
@@ -831,13 +831,16 @@ awful.rules.rules = {
 
     -- Set Chromium to always start on screen 3 in normal mode (by default it is maximized).
     { rule = { class = "Chromium" },
-      properties = { screen = 1,
-                     switchtotag = true,
-                     maximized = false,
-                     maximized_vertical = false,
-                     maximized_horizontal = false,
-                     tag = awful.screen.focused().tags[3]
-                   }
+      callback = function(c)
+        c.maximized, c.maximized_vertical, c.maximized_horizontal = false, false, false
+      end
+      --properties = { screen = 1,
+                     --switchtotag = true,
+                     --maximized = false,
+                     --maximized_vertical = false,
+                     --maximized_horizontal = false,
+                     --tag = awful.screen.focused().tags[3]
+                   --}
     },
 
     { rule = { class = "Gimp", role = "gimp-image-window" },
