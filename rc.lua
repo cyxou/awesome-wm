@@ -709,7 +709,7 @@ globalkeys = awful.util.table.join(
     awful.key({ altkey }, "Shift_L", function () kbdcfg.switch() end),
 
     -- Filemanager
-    awful.key({ modkey }, "e", function () awful.util.spawn("dolphin") end)
+    awful.key({ modkey }, "e", function () awful.util.spawn("pcmanfm") end)
 )
 
 clientkeys = awful.util.table.join(
